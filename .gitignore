@@ -2,3 +2,4 @@ dist/
 archive/
 .venv/
 __pycache__
+*.json
