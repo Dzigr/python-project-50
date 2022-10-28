@@ -1,0 +1,28 @@
+name: CI
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: install dependencies
+        run: |
+          pip install poetry flake8 pytest
+          make install
+      - name: run linter
+        run: make lint
+      - name: run tests
+        run: make test
+      - name: Test & publish code coverage
+    	uses: paambaati/codeclimate-action@v3.2.0
+    	env:
+    	  CC_TEST_REPORTER_ID: 580d34224374b603bdbf68019f67cb4cf5aabe84b2d64a146f19a06956ee3dc1
+    	with:
+      	  coverageCommand: make test-coverage
+      	  debug: true

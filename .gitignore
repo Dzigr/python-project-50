@@ -1,5 +1,6 @@
 dist/
-archive/
 .venv/
 __pycache__
-*.json
+.coverage
+.pytest_cache/
+.tests_result/

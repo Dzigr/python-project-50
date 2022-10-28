@@ -1,33 +1,37 @@
+"""Module for finding the difference."""
 import json
 
 
 def generate_diff(file_path1, file_path2):
+    """Find the different between two files.
+
+    Parameters:
+        file_path1, file_path2
+    Returns:
+        stringify(result_diff)
+    """
     result_diff = []
-    file_1 = json.load(open(file_path1))
-    file_2 = json.load(open(file_path2))
-    sorted_keys = sorted(set.union(set(file_1), set(file_2)))
+    file1 = json.load(open(file_path1))
+    file2 = json.load(open(file_path2))
+    sorted_keys = sorted(set.union(set(file1), set(file2)))
     for key in sorted_keys:
-        if key not in file_1: #data added
-            result_diff.append(f"+ {key}: {file_2[key]}")
-        elif key not in file_2: #data deleted
-            result_diff.append(f"- {key}: {file_1[key]}")
-        elif file_1[key] == file_2[key]: #data in both files
-            result_diff.append(f"  {key}: {file_1[key]}")
+        if key not in file1:
+            result_diff.append(f'+ {key}: {file2[key]}')
+        elif key not in file2:
+            result_diff.append(f'- {key}: {file1[key]}')
+        elif file1[key] == file2[key]:
+            result_diff.append(f'  {key}: {file1[key]}')
         else:
-            result_diff.append(f"- {key}: {file_1[key]}")
-            result_diff.append(f"+ {key}: {file_2[key]}")
+            result_diff.append(f'- {key}: {file1[key]}')
+            result_diff.append(f'+ {key}: {file2[key]}')
     return stringify(result_diff)
 
 
-def stringify(tree, replacer=' ', spaces_count=1):
-    def inner(values, lvl=1):
-        result = "{\n"
-        if isinstance(values, list):
-            for i in values:
-                result += f'{replacer * spaces_count * lvl}{i}' + "\n"
-            result += '}'
-            return result
-        else:
-            return str(values)
-
-    return inner(tree)
+def stringify(tree):
+    result = '{\n'
+    if isinstance(tree, list):
+        for line in tree:
+            result += ' {line}\n'.format(line=line)
+        result += '{end}'.format(end='}')
+        return result
+    return str(tree)
