@@ -9,7 +9,12 @@ import pytest
                 "fixtures/file1.json",
                 "fixtures/file2.json",
                 "fixtures/correct_flat_result.txt",
-                id='simple flat case case'),
+                id='flat_json'),
+            pytest.param(
+                "fixtures/file1.yaml",
+                "fixtures/file2.yaml",
+                "fixtures/correct_flat_result.txt",
+                id='flat_yaml'),
     ),
 )
 def test_generate_diff(argument1, argument2, expected):

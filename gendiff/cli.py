@@ -2,6 +2,8 @@
 import argparse
 
 
+FORMATTERS = ('stylish',)
+
 def parse():
     """Parse data from user.
 
@@ -16,7 +18,8 @@ def parse():
     parser.add_argument(
         '-f',
         '--format',
-        metavar='FORMAT',
-        help='set format of output',
+        choices=FORMATTERS,
+        default="stylish",
+        help='output format (default: %(default)s) ',
     )
     return parser.parse_args()
