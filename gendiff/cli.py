@@ -1,8 +1,11 @@
 """Input point."""
 import argparse
 
+FORMATTERS = (
+    'stylish',
+    'plain',
+)
 
-FORMATTERS = ('stylish',)
 
 def parse():
     """Parse data from user.
@@ -19,7 +22,7 @@ def parse():
         '-f',
         '--format',
         choices=FORMATTERS,
-        default="stylish",
+        default='stylish',
         help='output format (default: %(default)s) ',
     )
     return parser.parse_args()

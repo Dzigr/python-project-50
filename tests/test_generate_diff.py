@@ -15,6 +15,16 @@ import pytest
                 "fixtures/file2.yaml",
                 "fixtures/correct_flat_result.txt",
                 id='flat_yaml'),
+            pytest.param(
+                "fixtures/file1_tree.json",
+                "fixtures/file2_tree.json",
+                "fixtures/correct_recursive_result.txt",
+                id='tree_json'),
+            pytest.param(
+                "fixtures/file1_tree.yaml",
+                "fixtures/file2_tree.yaml",
+                "fixtures/correct_recursive_result.txt",
+                id='tree_yaml'),
     ),
 )
 def test_generate_diff(argument1, argument2, expected):
