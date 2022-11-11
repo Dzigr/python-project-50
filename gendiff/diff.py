@@ -23,7 +23,12 @@ def identify_diff(data1, data2):
         elif data1.get(key) == data2.get(key):
             status = 'equal'
             ident_value = data2.get(key)
-        elif isinstance((data1.get(key) and data2.get(key)), dict):
+        elif all(  # noqa: WPS337
+            [
+                isinstance(data1.get(key), dict),
+                isinstance(data2.get(key), dict),
+            ],
+        ):
             status, ident_value = 'inserted', identify_diff(
                 data1.get(key),
                 data2.get(key),
