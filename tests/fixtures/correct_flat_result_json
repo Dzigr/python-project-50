@@ -1,0 +1,1 @@
+{"follow": {"status": "removed", "value": false}, "host": {"status": "equal", "value": "hexlet.io"}, "proxy": {"status": "removed", "value": "123.234.53.22"}, "timeout": {"status": "updated", "value": {"old": 50, "new": 20}}, "verbose": {"status": "new", "value": true}}

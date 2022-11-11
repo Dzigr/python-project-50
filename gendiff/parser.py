@@ -28,7 +28,7 @@ def get_data(file_path):
     if extension in EXTENSIONS:
         with open(file_path) as file_data:
             return EXTENSIONS.get(extension)(file_data)
-    raise Exception(
+    raise Exception(  # noqa: WPS454
         '"{extension}" is unsupported file extension!'.format(
             extension=extension,
         ),

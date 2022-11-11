@@ -1,6 +1,6 @@
 """Module for generating diff with formatter."""
 from gendiff.diff import identify_diff
-from gendiff.formatters import apply_formatter
+from gendiff.formatters.formatter import apply_formatter
 from gendiff.parser import get_data
 
 
