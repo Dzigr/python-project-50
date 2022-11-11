@@ -5,10 +5,10 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1f371f57b3a0fdc779f0/test_coverage)](https://codeclimate.com/github/Dzigr/python-project-50/test_coverage)
 
 
-###Description: 
+Description: 
 Comparing two given files to find the difference and display according to the given output format. Format of files: json, yaml, yml
 
-###For install:
+For install:
 1. clone the repository: git clone git@github.com:Dzigr/python-project-50
 2. In terminal run command: make package-install
 
