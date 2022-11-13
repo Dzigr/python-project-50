@@ -27,14 +27,14 @@ def get_plain_format(diff_file, initial_path=''):
         elif status == 'updated':
             diff_text.append(messages.get(status).format(
                 path=path,
-                old_value=get_converted_value(current_value.get('old')),
-                new_value=get_converted_value(current_value.get('new')),
+                old_value=to_string(current_value.get('old')),
+                new_value=to_string(current_value.get('new')),
             ),
             )
         elif status == 'new':
             diff_text.append(messages.get(status).format(
                 path=path,
-                value=get_converted_value(current_value),
+                value=to_string(current_value),
             ),
             )
         elif status == 'removed':
@@ -60,7 +60,7 @@ def build_path(new_point, previous_path=''):
     return new_point
 
 
-def get_converted_value(initial_value):
+def to_string(initial_value):
     """Convert the value to required form.
 
     Parameters:

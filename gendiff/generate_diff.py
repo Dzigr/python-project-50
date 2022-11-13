@@ -1,7 +1,8 @@
 """Module for generating diff with formatter."""
+from gendiff.file_format import get_format
 from gendiff.diff import identify_diff
 from gendiff.formatters.formatter import apply_formatter
-from gendiff.parser import get_data
+from gendiff.parsing import get_data
 
 
 def generate_diff(file_path1, file_path2, formatter='stylish'):
@@ -16,8 +17,10 @@ def generate_diff(file_path1, file_path2, formatter='stylish'):
         apply_formatter(difference, formatter):
         output of the resulting difference in the selected format.
     """
-    data_from_file1 = get_data(file_path1)
-    data_from_file2 = get_data(file_path2)
+    file_format1 = get_format(file_path1)
+    file_format2 = get_format(file_path2)
+    data_from_file1 = get_data(file_path1, file_format1)
+    data_from_file2 = get_data(file_path2, file_format2)
     difference = identify_diff(
         data_from_file1,
         data_from_file2,

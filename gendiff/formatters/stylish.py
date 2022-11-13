@@ -99,11 +99,11 @@ def get_stylish_format(diff_file):
                 )
         return '\n'.join(chain('{', result_list, [space + '}']))  # noqa: WPS336
 
-    converted_file = get_converted_value(diff_file)
+    converted_file = to_string(diff_file)
     return inner(converted_file, depth=0)
 
 
-def get_converted_value(diff_file):
+def to_string(diff_file):
     """Convert the bool & None values to string.
 
     Parameters:
@@ -116,5 +116,5 @@ def get_converted_value(diff_file):
         if isinstance(diff_value, (bool, type(None))):
             diff_file[key] = json.dumps(diff_value)
         elif isinstance(diff_value, dict):
-            get_converted_value(diff_value)
+            to_string(diff_value)
     return diff_file

@@ -8,7 +8,7 @@ FORMATTERS = (
 )
 
 
-def parse():
+def parse_arguments():
     """Parse data from user.
 
     Returns:
