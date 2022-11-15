@@ -18,3 +18,16 @@ def get_format(filepath):
         return 'yaml'
     elif extension == '.json':
         return 'json'
+
+
+def read_data(filepath):
+    """Read the data from file.
+
+    Parameters:
+        filepath: path to the file.
+
+    Returns:
+        data: data from read file.
+    """
+    with open(filepath) as read_file:
+        return read_file.read()

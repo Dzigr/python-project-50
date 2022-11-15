@@ -10,11 +10,11 @@ EXTENSIONS = {  # noqa: 407
 }
 
 
-def get_data(file_path, extension):
+def get_data(file_data, extension):
     """Parse data from file with extension in EXTENSIONS.
 
     Parameters:
-        file_path: path to the file.
+        file_data: path to the file.
         extension: string, with specified the file format
 
     Returns:
@@ -25,8 +25,7 @@ def get_data(file_path, extension):
          Exception: unsupported file extension.
     """
     if extension in EXTENSIONS:
-        with open(file_path) as file_data:
-            return EXTENSIONS.get(extension)(file_data)
+        return EXTENSIONS.get(extension)(file_data)
     raise Exception(  # noqa: WPS454
         '"{extension}" is unsupported file extension!'.format(
             extension=extension,
