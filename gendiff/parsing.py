@@ -6,7 +6,7 @@ import yaml
 EXTENSIONS = {  # noqa: 407
     'yaml': yaml.safe_load,
     'yml': yaml.safe_load,
-    'json': json.load,
+    'json': json.loads,
 }
 
 
